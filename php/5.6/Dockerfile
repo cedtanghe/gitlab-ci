@@ -5,19 +5,14 @@ COPY config/php.ini /usr/local/etc/php/
 
 RUN apt-get update
 
-# Install opcache
-RUN docker-php-ext-install opcache
-
 # Install intl
 RUN apt-get install -y libicu-dev
 RUN docker-php-ext-configure intl && docker-php-ext-install intl	
 
-# Install the PHP gd library
-RUN docker-php-ext-configure gd \
-        --enable-gd-native-ttf \
-        --with-jpeg-dir=/usr/lib \
-        --with-freetype-dir=/usr/include/freetype2 && \
-    docker-php-ext-install gd
+# Install GD
+RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install gd
     
 # Install Xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
