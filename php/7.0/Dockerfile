@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.0-fpm
 
 # Copy a custom php.ini
 COPY config/php.ini /usr/local/etc/php/
