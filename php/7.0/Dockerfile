@@ -27,7 +27,7 @@ RUN pecl install zip && docker-php-ext-enable zip
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Install Mongo
-RUN pecl install mongo
+RUN pecl install mongodb
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php
