@@ -20,6 +20,9 @@ RUN docker-php-ext-install iconv
 # Install curl
 RUN apt-get install -y curl
 
+# Install PDO MYSQL
+RUN docker-php-ext-install pdo_mysql
+
 # Install intl
 RUN apt-get install -y libicu-dev
 RUN docker-php-ext-configure intl && docker-php-ext-install intl	
