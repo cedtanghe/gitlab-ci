@@ -8,6 +8,15 @@ RUN apt-get update
 # Install git
 RUN apt-get install -y git
 
+# Install mcrypt
+RUN apt-get install -y \
+    libmcrypt-dev \
+    libssl-dev &&\
+    docker-php-ext-install mcrypt
+
+# Install iconv
+RUN docker-php-ext-install iconv
+
 # Install curl
 RUN apt-get install -y curl
 
@@ -22,6 +31,9 @@ RUN docker-php-ext-install gd
     
 # Install ZIP
 RUN pecl install zip && docker-php-ext-enable zip
+
+# Install mbstring
+RUN docker-php-ext-install mbstring
 
 # Install Xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
