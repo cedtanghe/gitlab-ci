@@ -8,11 +8,11 @@ RUN apt-get update
 # Install git
 RUN apt-get install -y git
 
+# Install Php accelerator
+RUN docker-php-ext-install opcache
+
 # Install mcrypt
-RUN apt-get install -y \
-    libmcrypt-dev \
-    libssl-dev &&\
-    docker-php-ext-install mcrypt
+RUN apt-get install -y libmcrypt-dev libssl-dev && docker-php-ext-install mcrypt
 
 # Install iconv
 RUN docker-php-ext-install iconv
